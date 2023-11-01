@@ -1,1 +1,3 @@
-# prod-dev2-pictale
+main changes in
+-> use app password in gmail
+-> 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pictale - Login</title>
+    <link rel="stylesheet" href="Login Page.css">
+</head>
+<body>
+    <div class="Login-Box">
+        <form id="loginform" class="container">
+          <h1>Login</h1>
+      
+          <label for="email"><b>User email</b></label>
+          <input type="text" id="username" placeholder="Enter Email" name="email" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+      
+          <button type="submit" id="submit"class="btn">Login </button>
+          <br><br>
+
+          <a href="Forgot Password.html" id="Forgot">Forgot Password</a>
+          <script>
+            document.getElementById('loginForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+    
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+    
+                try {
+                    const response = await fetch('logdb.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `username=${username}&password=${password}`
+                    });
+    
+                    const data = await response.json();
+                    alert(data.message);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+        </script>
+        </form>
+    </div>
+</body>
+</html>
